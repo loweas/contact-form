@@ -5,11 +5,11 @@ www.freecontactform.com
 Free Version
 March 2021
 
-You are free to use for your own use. 
+You are free to use for your own use.
 You cannot resell, share or repackage in any way.
 
 Important legal notice:
-You must retain the attribution to www.freecontactform.com 
+You must retain the attribution to www.freecontactform.com
 If must be visible on the same page as the form.
 Or switch to the Pro version without attribution/credit.
 
@@ -31,7 +31,7 @@ Quick guide on how to add to your website:
     6. Upload ALL files (including the folder fcf-assets to your website)
 
 
-More detailed installation details can be found at: 
+More detailed installation details can be found at:
 
 https://www.freecontactform.com/form-guides/contact-form-installation-free
 

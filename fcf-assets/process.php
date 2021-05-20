@@ -6,11 +6,11 @@
 // Free Version
 // May 2021
 
-// You are free to use for your own use. 
+// You are free to use for your own use.
 // You cannot resell, share or repackage in any way.
 
 // Important legal notice:
-// You must retain the attribution to www.freecontactform.com 
+// You must retain the attribution to www.freecontactform.com
 // If must be visible on the same page as the form.
 // Or switch to the Pro version without attribution/credit.
 // ***********************************************************
@@ -56,12 +56,12 @@ $mail = new PHPMailer(true);
 $mail->CharSet = 'UTF-8';
 
 try {
-    
+
     if(strtoupper(SMTP_DEBUG) == "YES") {
         echo "Debug:<br>";
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-    } 
-    
+    }
+
     if (strtoupper(USE_SMTP) == "YES") {
 
         $mail->isSMTP();
@@ -157,7 +157,7 @@ try {
             if(!PHPMailer::validateAddress($email_to_list[$i])) {
                 exitFail(str_replace(":value", "EMAIL TO", $lang->{'emailInvalid'}));
             }
-            
+
             $mail->addAddress($email_to_list[$i], $email_to_name_list[$i]);
         } else {
 
@@ -199,7 +199,7 @@ try {
                 if(!PHPMailer::validateAddress($email_to_cc_list[$i])) {
                     exitFail(str_replace(":value", "EMAIL TO CC", $lang->{'emailInvalid'}));
                 }
-                
+
                 $mail->addCC($email_to_cc_list[$i]);
             }
         }
@@ -234,7 +234,7 @@ try {
                 if(!PHPMailer::validateAddress($email_to_bcc_list[$i])) {
                     exitFail(str_replace(":value", "EMAIL TO BCC", $lang->{'emailInvalid'}));
                 }
-                
+
                 $mail->addBCC($email_to_bcc_list[$i]);
             }
         }
@@ -247,7 +247,7 @@ try {
 
     $mail->Subject = trim(EMAIL_SUBJECT_BEFORE." ".$email_subject ." ".EMAIL_SUBJECT_AFTER);
 
-    $mail->isHTML(true); 
+    $mail->isHTML(true);
     $response_score = 1;
     $mail->Body = getHtmlBody($rules, $response_score);
     $mail->AltBody = getPlainBody($rules, $response_score);
@@ -263,7 +263,7 @@ try {
         $mail->clearAddresses();
         $mail->clearAttachments();
         $mail->Subject = EMAIL_OUT_SUBJECT;
-        
+
         $email_out_to = EMAIL_OUT_TO;
         if(useField($email_out_to)) {
             $email_out_to = getField($email_out_to);
@@ -316,7 +316,7 @@ function getEmailBody($rules, $score, $type) {
         $ss = "b";
         $body = file_get_contents('./email-templates/'.EMAIL_TEMPLATE_IN_HTML);
     }  else {
-        $ss = "a"; 
+        $ss = "a";
         $body = file_get_contents('./email-templates/'.EMAIL_TEMPLATE_IN_TEXT);
     }
     foreach($_POST as $field => $value) {
@@ -367,11 +367,11 @@ function getAutoResponseContent() {
 // SUPPORTING FUNCTIONS
 // ********************
 function checkConfigurationExists($lang) {
-    if(!defined('EMAIL_TO') || 
-        !defined('A') || 
-        !defined('B') || 
-        !defined('C') || 
-        !defined('D') || 
+    if(!defined('EMAIL_TO') ||
+        !defined('A') ||
+        !defined('B') ||
+        !defined('C') ||
+        !defined('D') ||
         !defined('F')) {
         exitFail($lang->{'configMissing'});
     }
@@ -390,7 +390,7 @@ function checkFieldsExist($rules, $lang) {
 }
 
 function validateFields($rules, $lang) {
-    
+
     require dirname(__FILE__).'/classes/FormValidate.php';
     $validate = new FormValidate;
     $validate->setLang($lang);
@@ -405,7 +405,7 @@ function validateFields($rules, $lang) {
         }
         $validate->validate($field_value, $field_rules);
     }
-    
+
     if($validate->anyErrors()) {
         $message =  "<ul>".$validate->getErrorString()."</ul>";
         exitError($message);
